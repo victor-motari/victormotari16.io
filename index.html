@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet Map with Custom Popups - JKUAT Juja</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+        .custom-popup {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        // Initialize the map centered at JKUAT Juja
+        var map = L.map('map').setView([-1.101, 37.014], 16); // Coordinates of JKUAT Juja
+
+        // Add a tile layer (OpenStreetMap tiles)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Define marker coordinates within JKUAT Juja
+        var marker1 = L.marker([-1.101, 37.014]).addTo(map);
+        var marker2 = L.marker([-1.103, 37.015]).addTo(map);
+
+        // Custom popup content
+        var popupContent1 = '<div class="custom-popup">' +
+                                '<h3>CUSTOMIZED POP UP</h3>' +
+                                '<p>This is a custom popup for Marker 1 within JKUAT Juja.</p>' +
+                                '<a href="https://example.com">More info</a>' +
+                            '</div>';
+
+        var popupContent2 = '<div class="custom-popup">' +
+                                '<h3>CUSTOMIZED POP UP</h3>' +
+                                '<p>This is a custom popup for Marker 2 within JKUAT Juja.</p>' +
+                                '<a href="https://example.com">More info</a>' +
+                            '</div>';
+
+        // Bind popups to markers
+        marker1.bindPopup(popupContent1);
+        marker2.bindPopup(popupContent2);
+    </script>
+</body>
+</html>
